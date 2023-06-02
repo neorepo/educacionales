@@ -1,0 +1,27 @@
+Create an environment
+Cree una carpeta de proyecto y una carpeta .venv dentro de:
+
+$ mkdir myproject
+$ cd myproject
+
+sudo apt install python3.10-venv
+-m mod: run library module as a script (terminates option list)
+$ python3 -m venv .venv
+
+Activate the environment
+Antes de trabajar en su proyecto, active el entorno correspondiente:
+
+$ . .venv/bin/activate
+
+Install Flask
+Dentro del entorno activado, use el siguiente comando para instalar Flask:
+
+pip install Flask
+pip3 install requests
+
+Execute to app
+flask --app hello run
+flask --app filename run --debug
+
+Harvard CS50 2023 | Introduction to Computer Science - Flask
+https://www.youtube.com/watch?v=hXQPimnXYpM

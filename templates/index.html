@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es" dir="lt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
+
+    <title>DPE - Educacionales</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+
+        /* tr,
+        td,
+        th {
+            font-size: .875em;
+        } */
+
+        /* table.dataTable.dtr-column>tbody>tr>td.dtr-control::before,
+        table.dataTable.dtr-column>tbody>tr>th.dtr-control::before,
+        table.dataTable.dtr-column>tbody>tr>td.control::before,
+        table.dataTable.dtr-column>tbody>tr>th.control::before {
+            left: 0;
+            width: 100%;
+            content: '+ Info';
+            font-family: inherit;
+        }
+
+        table.dataTable.dtr-column>tbody>tr.parent td.dtr-control::before,
+        table.dataTable.dtr-column>tbody>tr.parent th.dtr-control::before,
+        table.dataTable.dtr-column>tbody>tr.parent td.control::before,
+        table.dataTable.dtr-column>tbody>tr.parent th.control::before {
+            content: '- Info';
+        } */
+    </style>
+
+</head>
+
+<body>
+    <!-- Publicado 	Nivel 	Departamento 	Escuela 	Zona 	Cargo 	Horas 	Turno 	Materia 	Llamado 	Domicilio Escuela 	Articulo 	Curso 	Horario 	Presentarse en 	Prioridad 	Condiciones Observaciones 	Movilidad 	Impresión llamado 	Estado 	Motivo de Cancelación -->
+
+    <img src="https://educacionales.mendoza.edu.ar/img/bannereduc.jpg" style="width: 100%; height: 50%;"
+        alt="Responsive image">
+
+    <div class="container mt-5 mb-5">
+
+        <div class="table-responsive">
+
+            <!-- https://datatables.net/extensions/responsive/examples/styling/bootstrap5.html -->
+            <table id="datatable" class="table table-sm table-striped table-hover dt-responsive" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <!-- {% for th in rows[0].keys() %}<th>{{ th }}</th>{% endfor %} -->
+                        <th>Publicado</th>
+                        <th>Nivel</th>
+                        <th>Departamento</th>
+                        <th>Escuela</th>
+                        <th>Zona</th>
+                        <th>Cargo</th>
+                        <th>Horas</th>
+                        <th>Turno</th>
+                        <th>Materia</th>
+                        <th>Llamado</th>
+                        <th>Domicilio Escuela</th>
+                        <th>Articulo</th>
+                        <th>Curso</th>
+                        <th>Horario</th>
+                        <th>Presentarse en</th>
+                        <th>Prioridad</th>
+                        <th>Condiciones</th>
+                        <th>Observaciones</th>
+                        <th>Movilidad</th>
+                        <th>Impresión llamado</th>
+                        <th>Estado</th>
+                        <th>Motivo de Cancelación</th>
+                        <!-- <th></th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                    <tr>
+                        <td>{{ row['Publicado'] }}</td>
+                        <td>{{ row['Nivel'] }}</td>
+                        <td>{{ row['Departamento'] }}</td>
+                        <td>{{ row['Escuela'] }}</td>
+                        <td>{{ row['Zona'] }}</td>
+                        <td>{{ row['Cargo'] }}</td>
+                        <td>{{ row['Horas'] }}</td>
+                        <td>{{ row['Turno'] }}</td>
+                        <td>{{ row['Materia'] }}</td>
+                        <td>{{ row['Llamado'] }}</td>
+                        <td>{{ row['Domicilio Escuela'] }}</td>
+                        <td>{{ row['Articulo'] }}</td>
+                        <td>{{ row['Curso'] }}</td>
+                        <td>{{ row['Horario'] }}</td>
+                        <td>{{ row['Presentarse en'] }}</td>
+                        <td>{{ row['Prioridad'] }}</td>
+                        <td>{{ row['Condiciones'] }}</td>
+                        <td>{{ row['Observaciones'] }}</td>
+                        <td>{{ row['Movilidad'] }}</td>
+                        <td>{{ row['Impresión llamado'] }}</td>
+                        <td>{{ row['Estado'] }}</td>
+                        <td>{{ row['Motivo de Cancelación'] }}</td>
+                        <!-- <td></td> -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <!-- DataTable -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                "order": [[0, "desc"]],
+                "pageLength": 100,
+                // responsive: {
+                //     details: {
+                //         type: 'column',
+                //         target: -1
+                //     }
+                // },
+                // columnDefs: [{
+                //     className: 'dtr-control',
+                //     orderable: false,
+                //     targets: -1
+                // }],
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontró nada, lo siento",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "search": "",
+                    "sSearchPlaceholder": 'Buscar...',
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sPrevious": "Anterior",
+                        "sNext": "Siguiente",
+                        "sLast": "Último"
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
